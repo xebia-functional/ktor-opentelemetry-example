@@ -13,12 +13,14 @@ import io.ktor.client.plugins.logging.*
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.netty.*
+import io.ktor.server.plugins.callloging.*
 import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.resources.Resources
 import io.ktor.server.routing.*
 import io.opentelemetry.instrumentation.ktor.v2_0.client.KtorClientTracing
 import io.opentelemetry.instrumentation.ktor.v2_0.server.KtorServerTracing
 import kotlinx.coroutines.awaitCancellation
+import org.slf4j.event.Level
 
 object Server {
   @JvmStatic
@@ -32,13 +34,14 @@ object Server {
           engine {
             requestTimeout = 0 // disabled
           }
-          install(Logging) { level = LogLevel.INFO }
+          install(Logging) { level = LogLevel.ALL }
           install(ClientContentNegotiation)
           install(KtorClientTracing) { setOpenTelemetry(openTelemetry) }
         }
       server(factory = Netty, port = 8081, host = "0.0.0.0") {
         install(ContentNegotiation) { json() }
         install(Resources)
+        install(CallLogging) { level = Level.DEBUG }
         install(KtorServerTracing) { setOpenTelemetry(openTelemetry) }
         routing { routes(ktorClient, logger) }
       }

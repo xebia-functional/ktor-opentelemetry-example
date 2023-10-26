@@ -23,7 +23,7 @@ object Client {
           engine {
             requestTimeout = 0 // disabled
           }
-          install(Logging) { level = LogLevel.INFO }
+          install(Logging) { level = LogLevel.ALL }
           install(ContentNegotiation)
           install(KtorClientTracing) { setOpenTelemetry(openTelemetry) }
         }

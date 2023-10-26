@@ -25,6 +25,7 @@ detekt {
 }
 
 dependencies {
+    implementation(libs.klogging)
     implementation(libs.opentelemetry.api)
     implementation(libs.opentelemetry.exporter.logging)
     implementation(libs.opentelemetry.sdk)
