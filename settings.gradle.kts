@@ -28,3 +28,6 @@ project(":client").projectDir = file("client")
 
 include("server-a")
 project(":server-a").projectDir = file("server-a")
+
+include("server-b")
+project(":server-b").projectDir = file("server-b")
