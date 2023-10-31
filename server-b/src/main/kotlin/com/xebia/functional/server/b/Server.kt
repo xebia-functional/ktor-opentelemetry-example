@@ -32,7 +32,7 @@ object Server {
         install(Resources)
         install(CallLogging) { level = Level.DEBUG }
         install(KtorServerTracing) { setOpenTelemetry(openTelemetry) }
-        routing { routes(logger) }
+        routing { routes(logger, openTelemetry) }
       }
       awaitCancellation()
     }

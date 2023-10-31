@@ -30,4 +30,7 @@ Once both servers are up and healthy, run the client:
 $ ./gradlew :client:client
 ```
 
-You can see the metrics on http://localhost:16686/
+You can see the metrics on 
+
+* Jaeger: http://localhost:16686/
+* Zipkin: http://localhost:9411/zipkin/
