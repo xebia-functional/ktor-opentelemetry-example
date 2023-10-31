@@ -24,10 +24,10 @@ $ ./gradlew server-a:server
 $ ./gradlew server-b:server
 ```
 
-Call to the endpoint:
+Once both servers are up and healthy, run the client:
 
 ```bash
-$ curl localhost:8081/hello
+$ ./gradlew :client:client
 ```
 
 You can see the metrics on http://localhost:16686/
