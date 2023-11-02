@@ -24,10 +24,13 @@ $ ./gradlew server-a:server
 $ ./gradlew server-b:server
 ```
 
-Call to the endpoint:
+Once both servers are up and healthy, run the client:
 
 ```bash
-$ curl localhost:8081/hello
+$ ./gradlew :client:client
 ```
 
-You can see the metrics on http://localhost:16686/
+You can see the metrics on 
+
+* Jaeger: http://localhost:16686/
+* Zipkin: http://localhost:9411/zipkin/
